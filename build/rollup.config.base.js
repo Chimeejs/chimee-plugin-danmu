@@ -11,9 +11,11 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import uglify from 'rollup-plugin-uglify';
+
 // PostCSS plugins
 import nested from 'postcss-nested';
 import cssnano from 'cssnano';
+import base64 from 'postcss-base64';
 
 const babelConfig = {
   cjs: {
@@ -76,6 +78,10 @@ export default function (modeConf) {
     plugins: [
       postcss({
         plugins: [
+          base64({
+            extensions: ['.svg'],
+            root: './src/'
+          }),
           nested(),
           cssnano()
         ],

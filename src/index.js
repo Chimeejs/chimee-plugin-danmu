@@ -115,5 +115,5 @@ const chimeeDanmu = {
 
   }
 };
-module.exports = chimeeDanmu;
+export default chimeeDanmu;
 
