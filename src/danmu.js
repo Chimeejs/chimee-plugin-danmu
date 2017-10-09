@@ -16,7 +16,7 @@ class Danma {
     this.config = config;
     this.thread = new Thread(plugin.$dom, config);
     // 画布有两种渲染方式， css 和 canvas
-    this.changeMode(config.mode);
+    this.changeMode(config.mode || 'css');
     this.lineHeight = config.lineHeight;
     this.timer = null;
   }
@@ -45,9 +45,9 @@ class Danma {
     this.paper && this.paper.clear();
   }
 
-/**
- * destroy 销毁操作， 切换模式， 或者用户手动销毁时
- */
+  /**
+   * destroy 销毁操作， 切换模式， 或者用户手动销毁时
+   */
   destroy () {
     this.paper.destroy();
   }
@@ -64,10 +64,10 @@ class Danma {
  * @param {String} mode 
  */
   changeMode (mode) {
-    if(mode === this.mode) return;
-    this.clear();
+    if(!mode || mode === this.mode) return;
+    this.thread.empty();
     this.paper && this.destroy();
-    this.paper = mode === 'css' ? new Css(this.pDom, this.thread, this.config) : new Canvas(this.pDom, this.thread, this.config);
+    this.paper = mode === 'canvas' ? new Canvas(this.pDom, this.thread, this.config) : new Css(this.pDom, this.thread, this.config);
     !this.plugin.paused && this.paper.start();
     this.mode = mode;
   }
