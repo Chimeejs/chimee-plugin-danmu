@@ -1,4 +1,4 @@
-import {isObject, deepAssign, addEvent, removeEvent} from 'chimee-helper';
+import {isObject, deepAssign, addEvent, removeEvent, raf, caf} from 'chimee-helper';
 import Danmu from './danmu.js';
 import './danmu.css';
 
@@ -112,7 +112,6 @@ const chimeeDanmu = {
     _resize () {
       this.danmu.resize();
     }
-
   }
 };
 export default chimeeDanmu;

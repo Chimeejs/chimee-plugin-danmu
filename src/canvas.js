@@ -1,11 +1,12 @@
 import {raf, caf} from 'chimee-helper';
 
 class Canvas {
-  constructor (pDom, thread, config) {
-    this.create(pDom);
-    this.thread = thread;
+  constructor (parent, config) {
+    this.create(parent.pDom);
+    this.thread = parent.thread;
+    this.renderTime = parent.renderTime;
     this.timer = null;
-    this.pDom = pDom;
+    this.pDom = parent.pDom;
     this.fontSize = config.fontSize;
     this.lineHeight = config.lineHeight;
   }

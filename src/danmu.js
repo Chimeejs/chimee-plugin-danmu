@@ -67,7 +67,7 @@ class Danma {
     if(!mode || mode === this.mode) return;
     this.thread.empty();
     this.paper && this.destroy();
-    this.paper = mode === 'canvas' ? new Canvas(this.pDom, this.thread, this.config) : new Css(this.pDom, this.thread, this.config);
+    this.paper = mode === 'canvas' ? new Canvas(this, this.config) : new Css(this, this.config);
     !this.plugin.paused && this.paper.start();
     this.mode = mode;
   }
@@ -170,7 +170,6 @@ class Danma {
     }else{
       danma = data;
     }
-
     const defaultData = {
       text: '你真的很漂亮',
       mode: 'flow',

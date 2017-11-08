@@ -62,23 +62,16 @@ const player = new chimee({
   * 参数： 空
   * 返回： 空
 
-### resize
+### open
 
-  * 作用： 屏幕大小发生变化时，弹幕内部需要做一些调整
+  * 作用： 打开弹幕
   * 类型： Function
   * 参数： 空
   * 返回： 空
 
-### clear
+### close
 
-  * 作用： 清楚当前屏幕上的弹幕
-  * 类型： Function
-  * 参数： 空
-  * 返回： 空
-
-### destroy
-
-  * 作用： 销毁当前弹幕
+  * 作用： 关闭弹幕
   * 类型： Function
   * 参数： 空
   * 返回： 空
@@ -92,7 +85,7 @@ const player = new chimee({
     * 含义： 替换的模式， 可传 'css' 或者 'canvas' 不可以为空
   * 返回： 空
 
-### emit
+### sendMsg
 
   * 作用： 发送弹幕
   * 类型： Function
@@ -127,4 +120,11 @@ const player = new chimee({
 
 ```
 
+### receiveData
 
+  * 作用： 接受弹幕的初始数据
+  * 类型： Function
+  * 参数： data
+    * 类型： Array
+    * 含义： 初始化塞入的所有数据
+  * 返回： 空

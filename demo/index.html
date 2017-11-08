@@ -34,10 +34,13 @@
       isLive: false,
       plugin: [{
         name: chimeePluginDanmu.name
-      }]
+      }],
+      autoplay: true,
+      volume: 0
     });
     $('.emit').click(function () {
-      
+      var text = $('input').val();
+      player.__dispatcher.plugins.chimeeDanmu.sendMsg(text);
     })
   </script>
 </body>

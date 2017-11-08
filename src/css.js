@@ -1,11 +1,13 @@
 import {raf, caf, setStyle} from 'chimee-helper';
+import {autobind} from 'toxic-decorators';
 
 class Css {
-  constructor (pDom, thread, config) {
-    this.create(pDom);
-    this.thread = thread;
+  constructor (parent, config) {
+    this.create(parent.pDom);
+    this.thread = parent.thread;
+    this.renderTime = parent.renderTime;
     this.timer = null;
-    this.pDom = pDom;
+    this.pDom = parent.pDom;
     this.fontSize = config.fontSize;
     this.lineHeight = config.lineHeight;
   }
@@ -71,6 +73,7 @@ class Css {
  * 逐条读取弹幕池中的弹幕数据并根据弹幕样式展示
  * @param {Array} pool
  */
+  @autobind
   render () {
     this.thread.pool.forEach((item, i) => {
       setStyle(item.piece, 'transform', `translateX(${item.offset.x}px) translateY(${item.offset.y}px) `);
@@ -92,7 +95,7 @@ class Css {
       }
 
     });
-    this.timer = raf.call(window, () => {this.render();});
+    this.timer = raf.call(window, this.render);
   }
 
   /**
