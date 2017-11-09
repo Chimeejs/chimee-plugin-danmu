@@ -6,13 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    video,container{
-      display: block;
-      width: 768px;
-      height: 360px;
-    }
-    container{
-      position: relative;
+    #wrap{
+      width: 700px;
     }
   </style>
 </head>
@@ -25,17 +20,21 @@
   </div>
   <script src="http://lib.baomitu.com/jquery/3.2.1/jquery.js"></script>
   <script src="../node_modules/chimee/lib/index.browser.js"></script>
+  <script src="../node_modules/chimee-plugin-controlbar/lib/index.browser.js"></script>
   <script src="../lib/index.browser.js"></script>
   <script>
     Chimee.install(chimeePluginDanmu);
+    Chimee.install(chimeePluginControlbar);
     const player = new Chimee({
       wrapper: '#wrap',
       src: 'http://yunxianchang.live.ujne7.com/vod-system-bj/103_371ab0c0fda-143d-4755-8727-d3cd12dce02d.mp4',
       isLive: false,
       plugin: [{
-        name: chimeePluginDanmu.name
-      }],
+        name: chimeePluginDanmu.name,
+        mode: 'canvas'
+      }, chimeePluginControlbar.name],
       autoplay: true,
+      controls: true,
       volume: 0
     });
     $('.emit').click(function () {

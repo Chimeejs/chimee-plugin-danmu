@@ -1,4 +1,4 @@
-import {isObject, deepAssign, addEvent, removeEvent, raf, caf} from 'chimee-helper';
+import {isObject, deepAssign, addEvent, removeEvent} from 'chimee-helper';
 import Danmu from './danmu.js';
 import './danmu.css';
 
@@ -23,7 +23,7 @@ const chimeeDanmu = {
   },
   operable: true,
   penetrate: true,
-  level: -1,
+  level: 2,
   create () {
   },
   init (videoConfig) {
@@ -51,19 +51,20 @@ const chimeeDanmu = {
       if(this.status === 'close') return;
       // 这里可以留一个限制，限制一秒内数据的展示量
       if(Math.abs(this.currentTime - this.currentPiece.time) > 1 || this.currentPiece.time === undefined) {
-        this.__searchPosition();
+        this._searchPosition();
       }
       while(this.currentTime >= this.currentPiece.time && this.currentPiece.time) {
         this.danmu.emit(this.currentPiece);
         this.currentPiece = this.danmuList[this.currentPostion++] || {};
       }
     },
-    contextmenu () {
-      // 暂未扩充，调研中。。。
+    contextmenu (e) {
+      e.preventDefault();
+      console.log(e.target)
     }
   },
   methods: {
-    __searchPosition () {
+    _searchPosition () {
       const len = this.danmuList.length;
       if(len === 0) return;
       if(this.currentTime > this.danmuList[len - 1].time) {
@@ -111,6 +112,9 @@ const chimeeDanmu = {
     },
     _resize () {
       this.danmu.resize();
+    },
+    getFps () {
+      return 60;
     }
   }
 };
