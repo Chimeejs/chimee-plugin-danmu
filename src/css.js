@@ -18,6 +18,7 @@ class Css {
    */
   create (pDom) {
     const dom = document.createElement('div');
+    dom.className = 'chimee-danmu-content';
     pDom.appendChild(dom);
     this.layer = dom;
     this.width = pDom.offsetWidth;

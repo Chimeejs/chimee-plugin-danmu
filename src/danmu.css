@@ -5,14 +5,13 @@ chimee-danmu{
   display: block;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
-chimee-danmu>div,
-chimee-danmu>canvas{
+chimee-dammu .chimee-danmu-content{
   width: 100%;
   height: 100%;
   user-select: none;
+  overflow: hidden;  
 }
 
 chimee-danmu .danmu-piece{

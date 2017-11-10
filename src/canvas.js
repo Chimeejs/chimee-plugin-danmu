@@ -16,6 +16,7 @@ class Canvas {
    */
   create (pDom) {
     const canvas = document.createElement('canvas');
+    canvas.className = 'chimee-danmu-content';
     pDom.appendChild(canvas);
 
     this.layer = canvas;

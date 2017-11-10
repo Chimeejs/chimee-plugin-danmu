@@ -4,6 +4,7 @@ import Canvas from './canvas.js';
 import Thread from './thread.js';
 import Css from './css.js';
 
+let pieceId = 0;
 class Danma {
   /**
    * @constructor
@@ -181,7 +182,9 @@ class Danma {
     data.mode = data.mode || 'flow';
     const piece = this.paper.createPiece(data);
     const row = data.mode === 'flow' ? this._line(piece) : this._vLine(data);
+    pieceId++;
     this.thread.pool.push({
+      id: pieceId,
       piece,
       text: data.text,
       mode: data.mode,
@@ -192,6 +195,16 @@ class Danma {
         y: this.lineHeight * row
       }
     });
+  }
+
+  getPieceByPoint (x, y) {
+    const pieces = [];
+    this.thread.pool.map(item => {
+      const startPoint = [item.offset.x, item.offset.y];
+      const endPoint = [item.offset.x + item.piece.width, item.offset.y + item.piece.width];
+      x >= startPoint[0] && x <= endPoint[0] && y >= startPoint[1] && y <= endPoint[1] && pieces.push(item);
+    });
+    return pieces;
   }
 }
 

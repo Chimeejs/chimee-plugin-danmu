@@ -128,3 +128,21 @@ const player = new chimee({
     * 类型： Array
     * 含义： 初始化塞入的所有数据
   * 返回： 空
+
+
+## 事件
+
+### danmuContextmenu
+
+  * 作用：监听弹幕右键点击事件
+  * 回调函数参数： 
+    * pieces: 
+      * 类型: Array
+      * 含义: 位于这个位置的所有弹幕集合
+
+
+## 其他
+
+### Q: 如何实现弹幕右键弹窗
+
+  用户可以监听 danmuContextmenu 事件，拿到该点下面的所有弹幕，然后使用 chimee-plugin-pop 插件，来自己构造弹窗（原因：弹窗内容根据业务场景会有不同的定制情况）

@@ -41,6 +41,9 @@
       var text = $('input').val();
       player.__dispatcher.plugins.chimeeDanmu.sendMsg(text);
     })
+    player.on('danmuContextmenu', function (d) {
+      console.log(d);
+    })
   </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-import {isObject, deepAssign, addEvent, removeEvent} from 'chimee-helper';
+import {isObject, deepAssign, addEvent, removeEvent, $, bind} from 'chimee-helper';
 import Danmu from './danmu.js';
 import './danmu.css';
 
@@ -60,7 +60,8 @@ const chimeeDanmu = {
     },
     contextmenu (e) {
       e.preventDefault();
-      console.log(e.target)
+      const p = this.danmu.getPieceByPoint(e.offsetX, e.offsetY); 
+      this.$emit('danmuContextmenu', p);     
     }
   },
   methods: {
@@ -119,4 +120,3 @@ const chimeeDanmu = {
   }
 };
 export default chimeeDanmu;
-
