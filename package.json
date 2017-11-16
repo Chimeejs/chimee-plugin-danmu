@@ -1,6 +1,6 @@
 {
   "name": "chimee-plugin-danmu",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "danmu for chimee",
   "main": "lib/index.js",
   "module": "lib/index.mjs",

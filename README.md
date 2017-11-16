@@ -45,6 +45,13 @@ const player = new chimee({
   * 默认： 'css'
   * 值： 'css' , 'canvas'
 
+### updateByVideo
+
+  * 类型： Boolean
+  * 含义： 弹幕是否与视频状态同步，视频播放／暂停状态对应弹幕的播放暂停
+  * 默认： true, 默认是同步的
+  * 值： true / false
+
 
 ## 方法
 

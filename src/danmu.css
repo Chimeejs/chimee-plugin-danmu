@@ -7,11 +7,12 @@ chimee-danmu{
   height: 100%;
 }
 
-chimee-dammu .chimee-danmu-content{
+chimee-danmu .chimee-danmu-content{
+  position: relative;
   width: 100%;
   height: 100%;
   user-select: none;
-  overflow: hidden;  
+  overflow: hidden;
 }
 
 chimee-danmu .danmu-piece{

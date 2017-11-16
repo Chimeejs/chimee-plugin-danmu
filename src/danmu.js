@@ -206,6 +206,10 @@ class Danma {
     });
     return pieces;
   }
+
+  // forbid (id) {
+
+  // }
 }
 
 export default Danma;

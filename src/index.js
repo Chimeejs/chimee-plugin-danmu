@@ -8,7 +8,8 @@ import './danmu.css';
 const defaultConfig = {
   lineHeight: 30,
   fontSize: 24,
-  mode: 'css'
+  mode: 'css',
+  updateByVideo: true
 };
 
 const chimeeDanmu = {
@@ -31,9 +32,10 @@ const chimeeDanmu = {
     const config = isObject(this.$config) ? deepAssign(defaultConfig, this.$config) : defaultConfig;
     this.danmu = new Danmu(this, config);
     addEvent(window, 'resize', this._resize);
+    this.updateByVideo = config.updateByVideo;
   },
   inited () {
-
+    !this.updateByVideo && this.danmu.start();
   },
   destroy () {
     this.danmu.destroy();
@@ -42,9 +44,11 @@ const chimeeDanmu = {
   },
   events: {
     play () {
+      if(!this.updateByVideo) return;
       this.status === 'open' && this.danmu.start();
     },
     pause () {
+      if(!this.updateByVideo) return;
       this.status === 'open' && this.danmu.pause();
     },
     timeupdate () {
@@ -114,9 +118,12 @@ const chimeeDanmu = {
     _resize () {
       this.danmu.resize();
     },
-    getFps () {
-      return 60;
-    }
+    // getFps () {
+    //   return 60;
+    // },
+    // forbidItem(id) {
+    //   thid.danmu.forbid(item);
+    // }
   }
 };
 export default chimeeDanmu;
