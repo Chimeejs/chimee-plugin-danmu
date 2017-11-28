@@ -93,6 +93,7 @@ const chimeeDanmu = {
     },
     open () {
       this.status = 'open';
+      this.danmu.start();
     },
     close () {
       this.status = 'close';

@@ -52,7 +52,7 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-nested": "^2.1.2",
     "postcss-reporter": "^5.0.0",
-    "rollup": "^0.50.0",
+    "rollup": "^0.51.6",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0",
