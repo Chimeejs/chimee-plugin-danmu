@@ -1,6 +1,6 @@
 {
   "name": "chimee-plugin-danmu",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "danmu for chimee",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
@@ -44,8 +44,8 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "chimee": "^0.4.2",
-    "chimee-plugin-controlbar": "^0.3.3",
+    "chimee": "^0.10.5",
+    "chimee-plugin-controlbar": "^0.3.9",
     "cssnano": "^3.10.0",
     "postcss": "^6.0.14",
     "postcss-base64": "^0.7.1",

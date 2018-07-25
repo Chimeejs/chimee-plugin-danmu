@@ -29,12 +29,13 @@ const chimeeDanmu = {
   },
   init (videoConfig) {
     if(videoConfig && videoConfig.danmu === false) return;
+  },
+  inited () {
     const config = isObject(this.$config) ? deepAssign(defaultConfig, this.$config) : defaultConfig;
     this.danmu = new Danmu(this, config);
     addEvent(window, 'resize', this._resize);
     this.updateByVideo = config.updateByVideo;
-  },
-  inited () {
+    
     !this.updateByVideo && this.danmu.start();
   },
   destroy () {
