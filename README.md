@@ -1,5 +1,7 @@
 # 弹幕组件
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Chimeejs/chimee-plugin-danmu.svg)](https://greenkeeper.io/)
+
 > 使用 css ／ canvas 实现弹幕
 
 ## 安装使用
