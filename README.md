@@ -40,10 +40,9 @@ const player = new chimee({
 
 ### lineHeight
 
-  * 类型： String
-  * 含义： 弹幕使用 canvas 还是 css 渲染
-  * 默认： 'css'
-  * 值： 'css' , 'canvas'
+  * 类型： Number
+  * 含义： 弹幕道的高度
+  * 默认： 30
 
 ### updateByVideo
 
@@ -106,7 +105,7 @@ const player = new chimee({
         * 含义： 弹幕展现方式（固定下方 top/ 固定上方bottom）／滚动弹幕(flow)
         * 默认值： flow
       * fontSize
-        * 类型： String
+        * 类型： Number
         * 含义： 字体大小（大号 big）／ （小号／ small)
         * 默认值： big
       * color
