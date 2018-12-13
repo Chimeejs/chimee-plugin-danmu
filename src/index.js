@@ -1,4 +1,4 @@
-import {isObject, deepAssign, addEvent, removeEvent, $, bind} from 'chimee-helper';
+import {isObject, deepAssign, addEvent, removeEvent} from 'chimee-helper';
 import Danmu from './danmu.js';
 import './danmu.css';
 
