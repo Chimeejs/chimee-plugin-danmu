@@ -39,7 +39,7 @@ class Css {
    */
   createPiece (d) {
     const fontSizeRatio = d.fontSize === 'small' ? 0.6 : 1;
-    const fontSize = typeof d.fontSize === "number" ? `${Math.floor(d.fontSize)}px` ? `${Math.floor(fontSizeRatio * this.fontSize)}px`;
+    const fontSize = typeof d.fontSize === 'number' ? `${Math.floor(d.fontSize)}px` : `${Math.floor(fontSizeRatio * this.fontSize)}px`;
     const fontFamily = d.fontFamily || 'serif';
     const color = d.color || '#ffffff';
     const piece = document.createElement('div');

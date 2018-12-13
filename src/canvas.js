@@ -39,7 +39,7 @@ class Canvas {
     const cvs = document.createElement('canvas');
     const ctx = cvs.getContext('2d');
     const fontSizeRatio = d.fontSize === 'small' ? 0.6 : 1;
-    const fontSize = `${Math.floor(fontSizeRatio * this.fontSize)}px`;
+    const fontSize = typeof d.fontSize === 'number' ? `${Math.floor(d.fontSize)}px` : `${Math.floor(fontSizeRatio * this.fontSize)}px`;
     const fontFamily = d.fontFamily || 'serif';
     ctx.font = `${fontSize} ${fontFamily}`;
     cvs.width = ctx.measureText(d.text).width;
