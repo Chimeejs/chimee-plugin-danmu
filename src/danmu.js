@@ -188,7 +188,7 @@ class Danma {
       piece,
       text: data.text,
       mode: data.mode,
-      speed: Math.pow(piece.width, 1 / 3) * 0.3,
+      speed: (typeof data.speed === "number" && data.speed > 0 && data.speed) || Math.pow(piece.width, 1 / 3) * 0.3,
       row,
       offset: {
         x: data.mode === 'flow' ? this.paper.width : (this.paper.width - piece.width) / 2,
