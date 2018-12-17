@@ -33,8 +33,9 @@
         name: chimeePluginDanmu.name,
         mode: 'css',
         updateByVideo: false,
-        fontSize: 48,
-        lineHeight: 70
+        fontSize: 12,
+        lineHeight: 70,
+        speed: 3000,
       }, chimeePluginControlbar.name],
       autoplay: true,
       controls: true,
@@ -42,7 +43,7 @@
     });
     $('.emit').click(function () {
       var text = $('input').val();
-      player.__dispatcher.plugins.chimeeDanmu.sendMsg(text);
+      player.__dispatcher.plugins.chimeeDanmu.sendMsg({text, speed: 5, fontSize: 50});
     })
     player.on('danmuContextmenu', function (d) {
       console.log(d);

@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint ./src --fix",
     "build": "npm run b-common && npm run b-es && npm run b-umd && npm run b-min",
+    "start": "rollup -c build/rollup.config.umd.js -w",
     "b-common": "rollup -c build/rollup.config.common.js",
     "b-es": "rollup -c build/rollup.config.es.js",
     "b-umd": "rollup -c build/rollup.config.umd.js",

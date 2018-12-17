@@ -44,6 +44,12 @@ const player = new chimee({
   * 含义： 弹幕道的高度
   * 默认： 30
 
+### fontSize
+
+  * 类型： Number | String
+  * 含义： 字体大小 |（大号 big）/（小号／ small) 
+  * 默认值： big
+
 ### updateByVideo
 
   * 类型： Boolean
@@ -105,13 +111,17 @@ const player = new chimee({
         * 含义： 弹幕展现方式（固定下方 top/ 固定上方bottom）／滚动弹幕(flow)
         * 默认值： flow
       * fontSize
-        * 类型： Number
-        * 含义： 字体大小（大号 big）／ （小号／ small)
+        * 类型： Number | String
+        * 含义： 字体大小 |（大号 big）/（小号／ small) 
         * 默认值： big
       * color
         * 类型： String
         * 含义： 弹幕颜色
         * 默认值： #fff
+      * speed
+        * 类型： Number
+        * 含义： 弹幕每 16ms 的一个步长
+        * 默认值： 根据弹幕宽度计算 `Math.pow(piece.width, 1 / 3) * 0.3`
       
     * 含义： 替换的模式， 可传 'css' 或者 'canvas' 不可以为空
   * 返回： 空
