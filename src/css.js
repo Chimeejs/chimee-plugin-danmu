@@ -79,7 +79,7 @@ class Css {
     this.thread.pool.forEach((item, i) => {
       setStyle(item.piece, 'transform', `translateX(${item.offset.x}px) translateY(${item.offset.y}px) `);
       if(item.mode === 'flow') {
-        item.offset.x -= item.speed;
+        item.offset.x = Math.floor(item.offset.x - item.speed);
         if(item.offset.x < -item.piece.width) {
           item.piece.parentNode.removeChild(item.piece);
           this.thread.remove(i);
