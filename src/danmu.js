@@ -75,10 +75,10 @@ class Danma {
 
 /**
  * flow  mode 下寻找合适的行， 来存放这条弹幕，
- * @param {Object} piece 当前准备要插的弹幕
+ * @param {Number} txtWidth 当前准备要插的弹幕字数
  * @return {Number} 行号
  */
-  _line (piece) {
+_line (txtWidth) {
     const data = this.thread.pool;
     const len = data.length;
     const rows = new Array(this.thread.rows);
@@ -99,9 +99,9 @@ class Danma {
         break;
       }
 
-      const left = rows[j].offset.x + rows[j].piece.width;
+      const left = rows[j].piece.getBoundingClientRect().left - this.paper.pDom.getBoundingClientRect().left + rows[j].piece.width;
 
-      if(piece.width < this.paper.width - left) {
+      if(txtWidth < this.paper.width - left) {
         row = j;
         break;
       }
@@ -158,6 +158,16 @@ class Danma {
     return row;
 
   }
+  /**
+   * 计算Dom宽度
+   * @param {String} str 
+   */
+  calcWords(str) {
+    const chinese = /[\u4e00-\u9fa5]/gm
+    const chineseLen = str.match(chinese) ? str.match(chinese).length : 0
+    //在我的需求中每个汉字宽20，其他字符宽12
+    return str.length == chineseLen ? chineseLen * 20 : ((str.length - chineseLen) * 12) + (chineseLen * 20)
+  }
 
 /**
  * 用户在当前时间点新增一条弹幕数据
@@ -180,8 +190,9 @@ class Danma {
 
     data = deepAssign(defaultData, danma);
     data.mode = data.mode || 'flow';
-    const piece = this.paper.createPiece(data);
-    const row = data.mode === 'flow' ? this._line(piece) : this._vLine(data);
+    const txtWidth = this.calcWords(data.text)
+    const row = data.mode === 'flow' ? this._line(txtWidth) : this._vLine(data);
+    const piece = this.paper.createPiece(data, row);
     pieceId++;
     this.thread.pool.push({
       id: pieceId,
