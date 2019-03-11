@@ -36,29 +36,52 @@ class Css {
   /**
    * 为一条数据创建一个 piece
    * @param {Object} d data 一条弹幕相关信息, 创建的时候就把其塞到容器里
+   * @param {Number} row 决定弹幕应该出现在那条弹道
    */
-  createPiece (d) {
+  createPiece (d, row) {
     const fontSizeRatio = d.fontSize === 'small' ? 0.6 : 1;
     const fontSize = typeof d.fontSize === 'number' ? `${Math.floor(d.fontSize)}px` : `${Math.floor(fontSizeRatio * this.fontSize)}px`;
     const fontFamily = d.fontFamily || 'serif';
     const color = d.color || '#ffffff';
     const piece = document.createElement('div');
     piece.className = 'danmu-piece';
+    //设置弹幕初始样式
     setStyle(piece, {
       color,
       fontSize,
       fontFamily,
-      transform: 'translateX(-9999px)'
+      transform: `translate3d(${this.layer.clientWidth}px, ${row * this.lineHeight}px, 0)`
     });
     piece.textContent = d.text;
     this.layer.appendChild(piece);
     piece.width = piece.offsetWidth;
     piece.height = this.lineHeight;
+
+    //计算弹幕的动画持续时间
+    const duration =  parseInt((13 - (piece.width/180))*1000);
+    // 设置弹幕动画
+    setStyle(piece, {
+      transform: `translate3d(${-piece.width}px, ${row * this.lineHeight}px, 0)`,
+      transition: `transform ${duration}ms linear 0s`
+    });
+    //在动画结束之后清除数据
+    let animateTimer = setTimeout(() => {
+      if(piece.parentNode) {
+        this.thread.pool.forEach((item, index) => {
+          if(Object.is(item.piece,piece)) {
+            piece.parentNode.removeChild(piece);
+            this.thread.pool.splice(index, 1);
+          }
+        })
+      }
+      clearTimeout(animateTimer);
+    }, duration);
+
     return piece;
   }
 
   start () {
-    this.render();
+    // this.render();
   }
 
   pause () {
